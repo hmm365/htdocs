@@ -39,29 +39,29 @@ include "../connect/sessionCheck.php";
                         </colgroup>
                         <tbody>
                         <?php
-                        $myBoardID = $_GET["myBoardID"];
-                        // echo $myBoardID;
-                        //조회수 +1
-                        $sql = "UPDATE myBoard SET boardView = boardView + 1 WHERE myBoardID = $myBoardID";
-                        $result = $connect->query($sql);
-
-                        //게시글 찾기
-                        $sql = "SELECT b.boardTitle, m.youName, b.regTime, b.boardView, b.boardContents FROM myBoard b JOIN myMember m ON(m.myMemberID = b.myMemberID) WHERE myBoardID = $myBoardID";
-                        $result = $connect->query($sql);
-
-                        if ($result) {
-                            $info = $result->fetch_array(MYSQLI_ASSOC);
-                        }
-
-                        // echo "<pre>";
-                        // var_dump($info);
-                        // echo "</pre>";
-
-                        echo "<tr><th>제목</th><td>{$info["boardTitle"]}</td></tr>";
-                        echo "<tr><th>등록자</th><td>{$info["youName"]}</td></tr>";
-                        echo "<tr><th>등록일</th><td>" . date("Y-m-d", $info["regTime"]) . "</td></tr>";
-                        echo "<tr><th>조회수</th><td>{$info["boardView"]}</td></tr>";
-                        echo "<tr><th>내용</th><td class='height'>{$info["boardContents"]}</td></tr>";
+                            $myBoardID = $_GET["myBoardID"];
+                            // echo $myBoardID;
+                            //조회수 +1
+                            $sql = "UPDATE myBoard SET boardView = boardView + 1 WHERE myBoardID = $myBoardID";
+                            $result = $connect->query($sql);
+    
+                            //게시글 찾기
+                            $sql = "SELECT b.boardTitle, m.youName, b.regTime, b.boardView, b.boardContents FROM myBoard b JOIN myMember m ON(m.myMemberID = b.myMemberID) WHERE myBoardID = $myBoardID";
+                            $result = $connect->query($sql);
+    
+                            if ($result) {
+                                $info = $result->fetch_array(MYSQLI_ASSOC);
+                            }
+                        
+                            // echo "<pre>";
+                            // var_dump($info);
+                            // echo "</pre>";
+                        
+                            echo "<tr><th>제목</th><td>{$info["boardTitle"]}</td></tr>";
+                            echo "<tr><th>등록자</th><td>{$info["youName"]}</td></tr>";
+                            echo "<tr><th>등록일</th><td>" . date("Y-m-d", $info["regTime"]) . "</td></tr>";
+                            echo "<tr><th>조회수</th><td>{$info["boardView"]}</td></tr>";
+                            echo "<tr><th>내용</th><td class='height'>{$info["boardContents"]}</td></tr>";
                         ?>
                             <!-- <tr>
                                 <th>제목</th>
