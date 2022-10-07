@@ -42,11 +42,11 @@ include "../connect/sessionCheck.php";
                             $myBoardID = $_GET["myBoardID"];
                             // echo $myBoardID;
                             //조회수 +1
-                            $sql = "UPDATE myBoard SET boardView = boardView + 1 WHERE myBoardID = $myBoardID";
+                            $sql = "UPDATE myBoard SET boardView = boardView + 1 WHERE myBoardID = {$myBoardID}";
                             $result = $connect->query($sql);
-    
+                            
                             //게시글 찾기
-                            $sql = "SELECT b.boardTitle, m.youName, b.regTime, b.boardView, b.boardContents FROM myBoard b JOIN myMember m ON(m.myMemberID = b.myMemberID) WHERE myBoardID = $myBoardID";
+                            $sql = "SELECT b.boardTitle, m.youName, b.regTime, b.boardView, b.boardContents FROM myBoard b JOIN myMember m ON(m.myMemberID = b.myMemberID) WHERE myBoardID = {$myBoardID}";
                             $result = $connect->query($sql);
     
                             if ($result) {

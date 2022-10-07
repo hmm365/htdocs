@@ -34,7 +34,15 @@
                 </div>
                 <div class="board__search">
                     <div class="left">
-                        <!-- * 총 <em>1111</em>건의 게시물이 등록되어 있습니다. -->
+                            <?php
+                            $sql = "SELECT count(myBoardID) FROM myBoard";
+                            
+                            $result = $connect -> query($sql);
+                            $boardAll = $result -> fetch_array(MYSQLI_ASSOC);
+                            $boardAll = $boardAll['count(myBoardID)'];
+
+                            echo "* 총 <em>".$boardAll."</em>건의 게시물이 등록되어 있습니다.";
+                            ?>
                     </div>
                     <div class="right">
                         <form action="boardSearch.php" name="boardSearch" method="get">
@@ -100,7 +108,7 @@
                                                 echo "<td>".$info['boardView']."</td>";
                                             echo "</tr>";
                                         }
-                                    }
+                                    } else echo "<tr><td>게시글이 없습니다.</td></tr>";
                                 }
                             ?>
                             <!-- <tr>
@@ -178,13 +186,13 @@
                 </div>
                 <div class="board__pages">
                     <ul>
-                   
                         <?php
                             $sql = "SELECT count(myBoardID) FROM myBoard";
                             $result = $connect -> query($sql);
-                                
+
                             $boardCount = $result -> fetch_array(MYSQLI_ASSOC);
                             $boardCount = $boardCount['count(myBoardID)'];
+                            // echo $boardCount;
                             //총 페이지 갯수
                             $boardCount = ceil($boardCount/$viewNum);
                             // echo $boardCount;
@@ -222,7 +230,7 @@
                                 echo "<li><a href='?page={$nextPage}'>다음</a></li>";
                             }
 
-                            echo "<li><a href='?page={$boardCount}'>마지막으로</a></li>"
+                            echo "<li><a href='?page={$boardCount}'>마지막으로</a></li>";
                             ?>
                         
                         <!-- <li><a href="#">처음으로</a></li>
