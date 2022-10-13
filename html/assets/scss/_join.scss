@@ -35,7 +35,7 @@
         background: $black;
         color: $white;
         margin: 0 auto;
-        display: block; 
+        display: block;
         font-size: 1.3rem;
         border-radius: 50px;
         padding: 0.7em;
@@ -44,7 +44,6 @@
     .check {
         margin-top: 5px;
     }
-    
 }
 
 // 회원가입
@@ -83,6 +82,11 @@
             font-weight: 300;
             box-sizing: border-box;
         }
+        .msg {
+            width: 100%;
+            padding: 10px;
+            color: red;
+        }
     }
 }
 
@@ -96,4 +100,62 @@
     width: 100%;
     border-radius: 5px;
     cursor: pointer;
+}
+
+// 관리자 페이지
+
+#join.admin {
+    padding: 110px 0 70px;
+}
+.join__box {
+    > div.overlap {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        label {
+            width: 100%;
+        }
+        input {
+            width: 80%;
+        }
+        .check {
+            @include btn_style1;
+            width: 20%;
+            line-height: 30px;
+        }
+        .msg {
+            width: 100%;
+            padding: 10px;
+            color: red;
+        }
+    }
+    .list {
+        h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        ul {
+            padding: 10px;
+            background: #fff;
+            border-radius: 5px;
+
+            li {
+                line-height: 1.4;
+                font-size: 18px;
+            }
+        }
+        span {
+            display: block;
+            padding: 10px 0;
+            input {
+                width: auto;
+            }
+            label {
+                display: inline-block;
+                font-size: 16px;
+            }
+        }
+    }
 }

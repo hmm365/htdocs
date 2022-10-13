@@ -749,6 +749,11 @@ body.fixed {
   font-weight: 300;
   box-sizing: border-box;
 }
+.join__box > div .msg {
+  width: 100%;
+  padding: 10px;
+  color: red;
+}
 
 .join__btn {
   display: block;
@@ -760,6 +765,63 @@ body.fixed {
   width: 100%;
   border-radius: 5px;
   cursor: pointer;
+}
+
+#join.admin {
+  padding: 110px 0 70px;
+}
+
+.join__box > div.overlap {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.join__box > div.overlap label {
+  width: 100%;
+}
+.join__box > div.overlap input {
+  width: 80%;
+}
+.join__box > div.overlap .check {
+  background: #000;
+  color: #fff;
+  padding: 13px 30px;
+  display: inline-block;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  width: 20%;
+  line-height: 30px;
+}
+.join__box > div.overlap .msg {
+  width: 100%;
+  padding: 10px;
+  color: red;
+}
+.join__box .list h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.join__box .list ul {
+  padding: 10px;
+  background: #fff;
+  border-radius: 5px;
+}
+.join__box .list ul li {
+  line-height: 1.4;
+  font-size: 18px;
+}
+.join__box .list span {
+  display: block;
+  padding: 10px 0;
+}
+.join__box .list span input {
+  width: auto;
+}
+.join__box .list span label {
+  display: inline-block;
+  font-size: 16px;
 }
 
 #board h2 {
