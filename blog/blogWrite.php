@@ -48,12 +48,12 @@
                             <input type="text" name="blogTitle" id="blogTitle" placeholder="제목을 넣어주세요" require>     
                         </div>
                         <div>
-                            <label for="blogContents">제목</label>
+                            <label for="blogContents">내용</label>
                             <textarea type="text" name="blogContents" id="blogContents" placeholder="내용을 넣어주세요" require></textarea>
                         </div>
-                        <div>
-                            <label for="blogFile">제목</label>
-                            <input type="file" name="blogFile" id="blogFile" accept=".jpg .jpeg .png .gif" placeholder="jpg, gif, png 파일만 넣어주세요" require>     
+                    <div>       
+                            <label for="blogFile">파일</label>
+                            <input type="file" name="blogFile" id="blogFile" accept=".jpg, .jpeg .png, .gif" placeholder="jpg, png, gif 파일만 넣어주세요!">    
                         </div>
                         <button type="sumbit" value="저장하기">저장하기</button>
                     </fieldset>
