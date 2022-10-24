@@ -53,7 +53,7 @@
                 // echo "이미지 파일이 맞네요!";
                 $sql = "INSERT INTO myBlog(myMemberID, blogTitle, blogContents, blogCategory, blogAuthor, blogView, blogLike, blogImgFile, blogImgSize, blogDelete, blogRegTime) VALUES('$myMemberID', '$blogTitle', '$blogContents', '$blogCategory', '$blogAuthor', '$blogView', '$blogLike', '$blogImgName', '$blogImgSize', '$blogLike', '$regTime')";
             } else {
-                echo "<script>alert('지원하는 이미지 파일이 아닙니다（＞人＜；）한번더 확인해주세요!'); history.back(1)</script>";
+                echo "<script>alert('지원하는 이미지 파일이 아닙니다. 한번더 확인해주세요!'); history.back(1)</script>";
             }
         }
     } else {
@@ -62,7 +62,7 @@
     }
     //이미지 사이즈 확인
     if($blogImgSize > 1000000){
-        echo "<script>alert('이미지 용량이 1메가를 초과했습니다(；′⌒`) 다시 한번 확인해 주세요!'); history.back(1)</script>";
+        echo "<script>alert('이미지 용량이 1메가를 초과했습니다. 다시 한번 확인해 주세요!'); history.back(1)</script>";
         exit;
     }
     $result = $connect -> query($sql);

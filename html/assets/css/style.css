@@ -279,10 +279,23 @@ body {
   align-items: center;
   justify-content: space-between;
   height: inherit;
+  position: relative;
+  border-top: 3px solid #000;
   padding-top: 20px;
   padding-bottom: 100px;
   font-size: 0.8rem;
   color: #666;
+  font-weight: 300;
+  margin-top: 100px;
+}
+.footer__inner::before {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: #000;
+  position: absolute;
+  left: 0;
+  top: 4px;
 }
 
 #banner h2 {
@@ -423,6 +436,7 @@ body {
   position: relative;
   border-bottom: 3px solid #000;
   padding-bottom: 70px;
+  align-items: flex-start;
 }
 .card__inner::before {
   content: "";
@@ -433,21 +447,41 @@ body {
   left: 0;
   bottom: -8px;
 }
-.card__inner > div {
-  width: 24%;
+.card__inner.horizon .card {
+  width: 100%;
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: space-between;
 }
-.card__inner > div figure {
+.card__inner.horizon .card img {
+  border-radius: 0px;
+}
+.card__inner.horizon .card h3 {
+  margin-top: 0;
+}
+.card__inner.horizon .card figure {
+  width: 30%;
+}
+.card__inner.horizon .card > div {
+  width: 67%;
+}
+.card__inner .card {
+  width: 24%;
+  min-height: 400px;
+  position: relative;
+}
+.card__inner .card figure {
   position: relative;
   overflow: hidden;
 }
-.card__inner > div figure img {
+.card__inner .card figure img {
   filter: saturate(0%);
   transition: all 0.3s;
 }
-.card__inner > div figure img:hover {
+.card__inner .card figure img:hover {
   filter: saturate(100%);
 }
-.card__inner > div figure .go {
+.card__inner .card figure .go {
   position: absolute;
   right: 10px;
   bottom: 10px;
@@ -462,19 +496,39 @@ body {
   opacity: 0;
   transition: all 0.6s ease;
 }
-.card__inner > div figure:hover .go {
+.card__inner .card figure:hover .go {
   opacity: 1;
   transform: translateX(0) rotate(0);
 }
-.card__inner > div h3 {
+.card__inner .card h3 {
   font-size: 1.3rem;
-  line-height: 2;
+  line-height: 1.5;
   margin-top: 0.3em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 5px;
 }
-.card__inner > div p {
+.card__inner .card p {
   font-size: 1rem;
   font-weight: 300;
   line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  margin-bottom: 10px;
+}
+.card__inner .card .cate {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  background: #f5f5f5;
+  font-size: 14px;
+  border-radius: 30px;
+  padding: 10px;
+  z-index: 30;
 }
 
 #ad h2 {
@@ -1096,11 +1150,10 @@ body.fixed {
 
 #blogWrite {
   text-align: center;
-  padding: 150px 0 0;
+  padding: 100px 0 0;
 }
-
 #blogWrite h2 {
-  margin-bottom: 20px;
+  margin-bottom: 60px;
 }
 
 .write__inner {
@@ -1128,9 +1181,9 @@ body.fixed {
 .write__inner label {
   display: block;
   margin-top: 20px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
-.write__inner #blogCate {
+.write__inner #blogCategory {
   width: 20%;
   padding: 10px;
   background: #fff;
@@ -1156,17 +1209,16 @@ body.fixed {
   background: #fff;
   border: 0;
   border-radius: 5px;
-  padding: 10px;
-  font-size: 18px;
   padding: 20px;
+  font-size: 18px;
   box-sizing: border-box;
 }
 .write__inner #blogFile {
   width: 100%;
   background: #fff;
-  padding: 20px;
   border: 0;
-  border-radius: 20px;
+  padding: 20px;
+  border-radius: 5px;
   font-size: 18px;
   box-sizing: border-box;
 }
@@ -1179,6 +1231,360 @@ body.fixed {
   font-size: 1rem;
   box-sizing: border-box;
   float: right;
-  box-sizing: border-box;
   margin-top: 20px;
+}
+
+#blogSearch {
+  text-align: center;
+  padding: 100px 0;
+  border-bottom: 3px solid #000;
+  position: relative;
+}
+#blogSearch::after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: #000;
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+}
+#blogSearch h2 {
+  font-size: 30px;
+  margin-bottom: 30px;
+}
+#blogSearch legend {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+#blogSearch input {
+  border: 1px solid #eee;
+  padding: 12px 30px;
+  font-size: 20px;
+  border-radius: 50px;
+}
+#blogSearch button {
+  background: #000;
+  font-size: 20px;
+  border-radius: 50px;
+  color: #fff;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.blog__inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.blog__title {
+  width: 100%;
+  padding: 70px 0;
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  margin: 50px 0;
+  position: relative;
+  z-index: 10;
+}
+.blog__title::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.blog__title__cate {
+  background: #000;
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 20px;
+  padding: 0 20px;
+  border-radius: 30px;
+  display: inline-block;
+}
+
+.blog__title__h1 {
+  font-size: 34px;
+  margin-bottom: 20px;
+  padding: 20px;
+  word-break: keep-all;
+}
+
+.blog__title__info a {
+  color: #fff;
+  font-size: 14px;
+  padding-top: 10px;
+  display: inline-block;
+  font-weight: 300;
+}
+
+.blog__contents {
+  width: 70%;
+  border-right: 1px solid #000;
+  padding-right: 30px;
+  box-sizing: border-box;
+}
+
+.blog__contents__ad {
+  position: relative;
+  border-bottom: 3px solid #000;
+  position: relative;
+  border-top: 3px solid #000;
+  margin-bottom: 50px;
+}
+.blog__contents__ad::before {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: #000;
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+}
+.blog__contents__ad::before {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: #000;
+  position: absolute;
+  left: 0;
+  top: 4px;
+}
+.blog__contents__ad > div {
+  background: rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  height: 100px;
+}
+
+.blog__contents__cont {
+  font-size: 16px;
+  margin: 20px 0;
+  line-height: 1.5;
+}
+
+.blog__contents__comment {
+  margin-top: 100px;
+  border-top: 2px solid #000;
+}
+.blog__contents__comment h3 {
+  display: inline-block;
+  background: #000;
+  color: #fff;
+  margin-bottom: 50px;
+}
+
+.comment {
+  margin-bottom: 80px;
+}
+
+.comment__view {
+  display: flex;
+  margin-bottom: 10px;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.comment__view__img {
+  width: 10%;
+}
+.comment__view__img img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.comment__view__data {
+  width: 20%;
+  border-bottom: 1px solid #000;
+  padding-bottom: 5px;
+  font-weight: 300;
+}
+.comment__view__data .name {
+  display: block;
+}
+.comment__view__data .date {
+  display: block;
+}
+
+.comment__view__msg {
+  width: 66%;
+  border-bottom: 1px solid #000;
+  line-height: 1.4;
+  padding-bottom: 5px;
+}
+
+.comment__del {
+  text-align: right;
+  margin-top: -5px;
+  line-height: 1.4;
+}
+.comment__del a:hover {
+  text-decoration: underline;
+  text-underline-position: under;
+}
+
+.comment__write {
+  padding: 20px;
+  background: #d4d4d4;
+}
+.comment__write label {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+}
+.comment__write input {
+  bottom: 0;
+  padding: 20px;
+  border-radius: 50px;
+  margin-top: 20px;
+  box-sizing: border-box;
+}
+.comment__write button {
+  margin-top: 20px;
+  bottom: 0;
+  background: #000;
+  color: #fff;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.comment__write__info {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.comment__write__info > * {
+  width: 32%;
+}
+
+.comment__write__msg input {
+  width: 100%;
+}
+
+.blog__aside {
+  width: 30%;
+  padding-left: 30px;
+  box-sizing: border-box;
+}
+
+.blog__aside__intro {
+  border-top: 0 !important;
+}
+.blog__aside__intro .img {
+  margin: 0 10% 0 10%;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.blog__aside__intro .img img {
+  width: 100%;
+}
+.blog__aside__intro .intro {
+  text-align: center;
+  padding: 10px;
+  line-height: 1.4;
+  font-weight: 300;
+}
+
+[class^=blog__aside__] {
+  border-top: 1px solid #000;
+  margin-bottom: 50px;
+}
+[class^=blog__aside__] h3 {
+  background: #000;
+  display: inline-block;
+  color: #fff;
+  margin-bottom: 2px;
+  padding: 1px 10px 2px 10px;
+}
+
+.blog__aside__cate li {
+  border-bottom: 1px solid #000;
+}
+.blog__aside__cate li a {
+  display: inline-block;
+  padding: 10px 0;
+}
+.blog__aside__cate li:hover {
+  background: #000;
+  transition: all 0.3s;
+}
+.blog__aside__cate li:hover a {
+  color: #fff;
+}
+
+.blog__aside__new li {
+  position: relative;
+  border-bottom: 1px solid #000;
+}
+.blog__aside__new li a {
+  display: block;
+}
+.blog__aside__new li a span {
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #000;
+}
+.blog__aside__new li a img {
+  object-fit: cover;
+  height: 100%;
+}
+.blog__aside__new li a em {
+  font-weight: 300;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.6;
+  margin: 16px 10px 16px 70px;
+  min-height: 48px;
+}
+.blog__aside__new li a:hover em {
+  text-decoration: underline;
+  text-underline-position: under;
+}
+
+.blog__aside__pop li {
+  border-bottom: 1px solid #000;
+  margin-bottom: 10px;
+}
+.blog__aside__pop li a span {
+  display: block;
+  height: 50px;
+  overflow: hidden;
+}
+.blog__aside__pop li a span img {
+  object-fit: cover;
+  height: 100%;
+}
+.blog__aside__pop li a em {
+  display: block;
+  font-weight: 300;
+  padding: 10px;
+}
+
+.blog__relation {
+  width: 100%;
 }
